@@ -1,0 +1,37 @@
+{
+    "sourceDetails":{
+        "fileFormat": "csv",
+        "train_filePath_seq": "../dataset/sdtm_camd/seq_data.csv"
+    }, 
+    "featuresDescription": {
+        "patientID": "USUBJID",
+        "seq_indicator": "VISITSEQ",
+        "cont_cols": ["AGE", "DBP", "HEIGHT",	"HR", "SBP", "WEIGHT", "Alkaline Phosphatase", "Aspartate Aminotransferase", "Cholesterol",	"Creatine Kinase", "Creatinine", "Gamma Glutamyl Transferase",	"Hematocrit", "Hemoglobin", "Hemoglobin A1C", "Sodium", "Triglycerides"],
+        "ordinal_cols": ["ADCCMD", "ADCCMP", "ADCCP", "ADCDRL", "ADCIP", "ADCOR",	"ADCRG", "ADCRI", "ADCRL", "ADCSL",	"MMAC", "MMNM",	"MMRL",	"SBLG"],
+        "categ_cols": ["COUNTRY", "RACE"],
+        "binary_cols": ["SEX", "Initial_diag", "past_cardiac_event"]
+    },
+    "loggingPaths":{
+        "model_save_path": "../checkpoints/model_checkpoints",
+        "samples_save_path": "../checkpoints/samples_saved",
+        "vis_path": "../checkpoints/vis_checkpoints",
+        "save_suffix": "crbm_test1",
+        "model_save_name": "best_model.pt",
+		"samples_save_name": "gen_data_crbm",
+        "log_path" : "../log/crbm"
+    },
+    "commonModelParameter":{ 
+        "min_seq_len" : 3,
+        "max_seq_len" : 12,
+        "optimizer" : "adam",
+        "batch_size" : 100,
+        "epochs": 2000,
+        "verbose_step":100,
+        "seed": 123,
+        "verbose": true
+    },
+    "crbmParams":{ 
+        "hidden_dim" : 32,
+        "lr" : 1e-3
+    }
+}
